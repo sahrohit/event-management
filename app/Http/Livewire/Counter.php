@@ -20,6 +20,6 @@ class Counter extends Component
     }
     public function render()
     {
-        return view('livewire.counter')->layout('app.blade.php');
+        return view('livewire.counter');
     }
 }
