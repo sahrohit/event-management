@@ -3,6 +3,7 @@
 @section('content')
     <div class="mx-40">
         <livewire:navbar />
-        <livewire:event-list />
+        <livewire:add-participant :event="$event" />
+        <livewire:participant-list />
     </div>
 @endsection

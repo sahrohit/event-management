@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Event;
 use App\Models\Participant;
 use Livewire\Component;
 
 class AddParticipant extends Component
 {
+    public Event $event;
     public $first_name;
     public $last_name;
     public $phone_number;
@@ -50,7 +52,7 @@ class AddParticipant extends Component
             'food_preference' => $this->food_preference,
             'room_preference' => $this->room_preference,
             'require_parking' => $this->require_parking,
-            'event_id' => 1,
+            'event_id' => $this->event->id,
         ]);
 
         $this->reset();
