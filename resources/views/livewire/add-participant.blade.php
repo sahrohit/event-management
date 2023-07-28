@@ -1,7 +1,7 @@
 <form wire:submit.prevent="submit" class="flex flex-col gap-6 p-12 mb-20 bg-slate-100 rounded-md my-20">
 
     <div class="flex flex-row w-full justify-between">
-        <h1 class="text-3xl">Registering for {{ $event->title }}</h1>
+        <h1 class="text-3xl">Registering for <span class="font-semibold">{{ $event->title }}</span></h1>
         <h2 class="text-xl">{{ $event->time_begin }} to {{ $event->time_end }}</h2>
     </div>
 
