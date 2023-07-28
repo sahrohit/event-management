@@ -20,8 +20,8 @@ class AddParticipant extends Component
     public $require_parking;
 
     protected $rules = [
-        'first_name' => 'required|min:3',
-        'last_name' => 'required|min:3',
+        'first_name' => 'required',
+        'last_name' => 'required',
         'phone_number' => 'required|min:10',
         'email' => 'required|email',
         'emergency_contact' => 'required|min:10',
