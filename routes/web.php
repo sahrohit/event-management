@@ -18,5 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/participants', function () {
+    return view('participants');
+});
+
 
 Route::get('/{id}', [EventController::class, 'render']);

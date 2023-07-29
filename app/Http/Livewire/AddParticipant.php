@@ -25,14 +25,14 @@ class AddParticipant extends Component
         'first_name' => 'required',
         'last_name' => 'required',
         'phone_number' => 'required|min:10',
-        'email' => 'required|email',
+        'email' => ['required', 'email', 'unique:participants,email'],
         'emergency_contact' => 'required|min:10',
         'country' => 'required|min:3',
         'id_type' => 'required',
         'id_number' => 'required|min:3',
         'food_preference' => 'required',
         'room_preference' => 'required',
-        'require_parking' => '',
+        'require_parking' => 'required',
     ];
 
     public function submit()
@@ -55,7 +55,7 @@ class AddParticipant extends Component
             'event_id' => $this->event->id,
         ]);
 
-        $this->reset();
+        $this->reset(['first_name', 'last_name', 'phone_number', 'email', 'emergency_contact', 'country', 'id_type', 'id_number', 'food_preference', 'room_preference', 'require_parking']);
     }
 
     public function render()

@@ -7,7 +7,7 @@
 
     <p>{{ $event->description }}</p>
 
-    
+
     <div class="flex flex-row w-full justify-between gap-8">
         <div class="w-full">
             <div class="flex flex-row justify-between w-full">
