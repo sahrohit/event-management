@@ -32,7 +32,7 @@ class AddParticipant extends Component
         'id_number' => 'required|min:3',
         'food_preference' => 'required',
         'room_preference' => 'required',
-        'require_parking' => 'required',
+        'require_parking' => '',
     ];
 
     public function submit()

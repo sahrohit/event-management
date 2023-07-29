@@ -1,4 +1,4 @@
-<form wire:submit.prevent="submit" class="flex flex-col gap-6 p-12 mb-20 bg-slate-100 rounded-md my-20">
+<form wire:submit.prevent="submit" class="flex flex-col gap-6 p-12 mb-20 bg-slate-50 rounded-md my-20">
 
     <div class="flex flex-row w-full justify-between">
         <h1 class="text-3xl">Registering for <span class="font-semibold">{{ $event->title }}</span></h1>
@@ -7,7 +7,7 @@
 
     <p>{{ $event->description }}</p>
 
-
+    
     <div class="flex flex-row w-full justify-between gap-8">
         <div class="w-full">
             <div class="flex flex-row justify-between w-full">
