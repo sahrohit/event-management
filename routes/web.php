@@ -22,5 +22,8 @@ Route::get('/participants', function () {
     return view('participants');
 });
 
+Route::get('/result', function () {
+    return view('result');
+});
 
 Route::get('/{id}', [EventController::class, 'render']);

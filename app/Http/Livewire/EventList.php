@@ -10,7 +10,7 @@ class EventList extends Component
     public function render()
     {
         return view('livewire.event-list', [
-            'events' => Event::orderBy('created_at', 'desc')->get(),
+            'events' => Event::orderBy('time_begin', 'asc')->get(),
         ]);
     }
 }

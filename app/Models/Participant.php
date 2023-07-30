@@ -28,6 +28,7 @@ class Participant extends Model
         'room_preference',
         'require_parking',
         'event_id',
+        'pnr'
     ];
 
     public function event(): BelongsTo

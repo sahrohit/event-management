@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Event;
 use App\Models\Participant;
 use Livewire\Component;
+use Redirect;
 
 class AddParticipant extends Component
 {
@@ -21,6 +22,21 @@ class AddParticipant extends Component
     public $room_preference;
     public $require_parking;
 
+    // Write a function to generate 8 digit PNR string using alphabets
+
+    public function generatePNR()
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+
+        for ($i = 0; $i < 8; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $randomString .= $characters[$index];
+        }
+
+        return $randomString;
+    }
+
     protected $rules = [
         'first_name' => 'required',
         'last_name' => 'required',
@@ -34,6 +50,7 @@ class AddParticipant extends Component
         'room_preference' => 'required',
         'require_parking' => 'required',
     ];
+
 
     public function submit()
     {
@@ -53,9 +70,12 @@ class AddParticipant extends Component
             'room_preference' => $this->room_preference,
             'require_parking' => $this->require_parking,
             'event_id' => $this->event->id,
+            'pnr' => $this->generatePNR(),
         ]);
 
         $this->reset(['first_name', 'last_name', 'phone_number', 'email', 'emergency_contact', 'country', 'id_type', 'id_number', 'food_preference', 'room_preference', 'require_parking']);
+
+        return Redirect::to('/result?id=' . $this->event->id . '&participant_id=' . Participant::latest()->first()->id . '&pnr=' . Participant::latest()->first()->pnr);
     }
 
     public function render()

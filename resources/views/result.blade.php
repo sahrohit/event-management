@@ -1,5 +1,5 @@
 @extends('layout.app')
 
 @section('content')
-    <livewire:all-participants />
+    <livewire:success />
 @endsection

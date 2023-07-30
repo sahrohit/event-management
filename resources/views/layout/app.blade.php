@@ -13,7 +13,11 @@
 </head>
 
 <body>
-    @yield('content')
+    <div class="mx-4 sm:mx-20 lg:mx-32">
+        <livewire:navbar />
+        @yield('content')
+        <livewire:footer />
+    </div>
     @livewireScripts
 </body>
 

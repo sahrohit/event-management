@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->enum('food_preference', ['vegetarian', 'vegan', 'none'])->default('none');
             $table->enum('id_type', ['citizenship', 'voter_id', 'passport'])->default('passport');
             $table->string('id_number');
+            $table->string('pnr')->unique()->index();
             $table->timestamps();
         });
     }
