@@ -90,6 +90,10 @@
                                                 class="text-indigo-600 hover:text-indigo-900">View<span
                                                     class="sr-only">, {{ $participant->first_name }}
                                                     {{ $participant->last_name }}</span></a>
+                                            <button class="text-indigo-600 hover:text-indigo-900"
+                                                wire:click="delete({{ $participant->id }})">Delete</button>
+                                            <a href="/edit?participant_id={{ $participant->id }}"
+                                                class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                         </td>
                                     </tr>
                                 @endforeach

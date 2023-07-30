@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\EditParticipant;
 use App\Http\Livewire\EventController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,7 @@ Route::get('/participants', function () {
 Route::get('/result', function () {
     return view('result');
 });
+
+Route::get('/edit', [EditParticipant::class, 'render']);
 
 Route::get('/{id}', [EventController::class, 'render']);

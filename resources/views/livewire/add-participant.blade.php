@@ -1,17 +1,27 @@
 <form wire:submit.prevent="submit" class="flex flex-col gap-6 p-12 mb-20 bg-slate-50 rounded-md my-20">
 
-    <div class="flex flex-row w-full justify-between">
-        <h1 class="text-3xl">Registering for <span class="font-semibold">{{ $event->title }}</span></h1>
-        <h2 class="text-xl">{{ $event->time_begin }} to {{ $event->time_end }}</h2>
-    </div>
+    @isset($event)
+        <div class="flex flex-row w-full justify-between">
+            <h1 class="text-3xl">
+                @if ($participant)
+                    Editing
+                @else
+                    Registering for
+                @endif
+                <span class="font-semibold">{{ $event->title }}</span>
+                @isset($participant)
+                    for {{ $participant->first_name }} {{ $participant->last_name }}
+                @endisset
+            </h1>
+            <h2 class="text-xl">{{ $event->time_begin }} to {{ $event->time_end }}</h2>
+        </div>
 
-    <p>{{ $event->description }}</p>
-
+        <p>{{ $event->description }}</p>
+    @endisset
 
     <div class="flex flex-row w-full justify-between gap-8">
         <div class="w-full">
             <div class="flex flex-row justify-between w-full">
-
                 <label for="first_name" class="block text-sm font-medium text-gray-700">First Name</label>
                 @error('first_name')
                     <p class="text-sm text-red-600">{{ $message }}</p>
@@ -202,7 +212,13 @@
 
         <div class="mt-5 sm:mt-0 sm:ml-6 sm:flex sm:flex-shrink-0 sm:items-center">
             <button type="submit"
-                class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm">Submit</button>
+                class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:text-sm">
+                @if ($participant)
+                    Update
+                @else
+                    Submit
+                @endif
+            </button>
         </div>
     </div>
 

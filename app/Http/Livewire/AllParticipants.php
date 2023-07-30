@@ -9,6 +9,12 @@ use Livewire\WithPagination;
 class AllParticipants extends Component
 {
     use WithPagination;
+
+    public function delete($id)
+    {
+        Participant::destroy($id);
+    }
+
     public function render()
     {
         return view('livewire.participant-list', [
