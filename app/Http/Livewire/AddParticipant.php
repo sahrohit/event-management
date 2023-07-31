@@ -125,7 +125,7 @@ class AddParticipant extends Component
 
         $this->reset(['first_name', 'last_name', 'phone_number', 'email', 'emergency_contact', 'country', 'id_type', 'id_number', 'food_preference', 'room_preference', 'require_parking']);
 
-        return Redirect::to('/result?id=' . $this->event->id . '&participant_id=' . Participant::latest()->first()->id . '&pnr=' . Participant::latest()->first()->pnr);
+        return redirect()->to('/result?id=' . $this->event->id . '&participant_id=' . Participant::latest()->first()->id . '&pnr=' . Participant::latest()->first()->pnr);
     }
 
     public function render()
