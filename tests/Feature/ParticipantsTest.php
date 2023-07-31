@@ -11,6 +11,7 @@ use Tests\TestCase;
 
 class ParticipantsTest extends TestCase
 {
+
     /** @test */
     function can_create_participant()
     {
@@ -20,7 +21,7 @@ class ParticipantsTest extends TestCase
             ->set('last_name', 'bar')
             ->set('email', 'test@test.com')
             ->set('phone_number', '1234567890')
-            ->set('country', 'India')
+            ->set('country', 'Nepal')
             ->set('emergency_contact', '0987654321')
             ->set('require_parking', '1')
             ->set('room_preference', 'single')
@@ -72,25 +73,5 @@ class ParticipantsTest extends TestCase
             ->assertRedirect('/result?id=' . Event::latest()->first()->id . '&participant_id=' . Participant::latest()->first()->id . '&pnr=' . Participant::latest()->first()->pnr);
 
         Participant::whereEmail('test@test.com')->delete();
-    }
-
-    function is_successfully_deleted()
-    {
-        Livewire::test(AddParticipant::class)
-            ->set('event', Event::latest()->first())
-            ->set('first_name', 'foo')
-            ->set('last_name', 'bar')
-            ->set('email', 'test@test.com')
-            ->set('phone_number', '1234567890')
-            ->set('country', 'India')
-            ->set('emergency_contact', '0987654321')
-            ->set('require_parking', '1')
-            ->set('room_preference', 'single')
-            ->set('food_preference', 'vegetarian')
-            ->set('id_type', 'citizenship')
-            ->set('id_number', '1234567890')
-            ->call('submit');
-
-        $this->assertTrue(Participant::whereEmail('test@test.com')->exists());
     }
 }
