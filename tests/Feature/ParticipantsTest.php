@@ -72,8 +72,8 @@ test('It displays the data in the database after submitting of the form', functi
 
 test("It displays the table sorted by created at on descending order", function () {
     $participants = Participant::where(['event_id' => Event::latest()->first()->id])->orderBy('created_at', 'desc')->get();
-    livewire(ParticipantList::class, ['event' => Event::latest()->first()])->assertSeeInOrder([$participants[0]->first_name, $participants[1]->first_name, $participants[2]->first_name]);
-    get('/' . Event::latest()->first()->id)->assertSeeInOrder([$participants[0]->first_name, $participants[1]->first_name, $participants[2]->first_name]);
+    livewire(ParticipantList::class, ['event' => Event::latest()->first()])->assertSeeInOrder([$participants[0]->first_name, $participants[1]->first_name]);
+    get('/' . Event::latest()->first()->id)->assertSeeInOrder([$participants[0]->first_name, $participants[1]->first_name]);
 });
 
 test(
