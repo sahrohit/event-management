@@ -20,10 +20,10 @@ test(
 test(
     'It displays event page with add participant, participant list, navbar and footer livewire components',
     fn () => get('/' . Event::inRandomOrder()->first()->id)
-        ->assertSeeLivewire(AddParticipant::class)->assertSeeLivewire(ParticipantList::class)->assertSeeLivewire(Navbar::class)->assertSeeLivewire(Footer::class)
+        ->assertSeeLivewire(Navbar::class)->assertSeeLivewire(AddParticipant::class)->assertSeeLivewire(ParticipantList::class)->assertSeeLivewire(Footer::class)
 );
 
-test("It displays the Correct event information", fn () => get('/' . Event::latest()->first()->id)
+test("It displays the Correct event information from the database", fn () => get('/' . Event::latest()->first()->id)
     ->assertSee(Event::latest()->first()->title)->assertSee(Event::latest()->first()->description));
 
 test('It displays email is required error message', function () {
@@ -84,11 +84,11 @@ test(
 test(
     'It deletes the participant record from the database',
     function () {
-
         Participant::factory()->create(['event_id' => Event::latest()->first()->id, 'email' => 'delete@test.com']);
 
-        livewire(ParticipantList::class, ['event' => Event::latest()->first()])->call('delete', Participant::latest()->first()->id);
+        livewire(ParticipantList::class, ['event' => Participant::latest()->first()->event])->call('delete', Participant::latest()->first()->id);
 
         $this->assertFalse(Participant::whereEmail('delete@test.com')->exists());
+        Participant::whereEmail('delete@test.com')->delete();
     }
 );

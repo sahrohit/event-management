@@ -27,5 +27,9 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <ini name="xdebug.mode" value="coverage"/>
+        <ini name="xdebug.start_with_request" value="yes"/>
+        <ini name="xdebug.client_port" value="9003"/>
     </php>
+
 </phpunit>

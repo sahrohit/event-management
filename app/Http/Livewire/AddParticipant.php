@@ -24,7 +24,7 @@ class AddParticipant extends Component
     public $require_parking;
 
 
-    public function generatePNR()
+    public static function generatePNR()
     {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
