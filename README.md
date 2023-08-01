@@ -16,6 +16,12 @@
 
 # About The Project
 
+## Code Coverage
+
+[![codecov](https://codecov.io/gh/sahrohit/event-management/branch/main/graph/badge.svg?token=3928e7bf-bae0-4a28-997a-0e548887bdbe)](https://codecov.io/gh/sahrohit/event-management)
+
+![Code Coverage](public/coverage.png)
+
 ## Installation
 
 To install Event Maangement (Takshak) locally, follow these steps:
