@@ -37,11 +37,17 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
+      - name: Install Node dependencies
+        run: npm install
+
       - name: Copy environment file
         run: cp .env.production .env
 
       - name: Generate app key
         run: php artisan key:generate
+
+      - name: Seed the Database
+        run: php artisan db:seed
 
       - name: Run Migrations
         run: php artisan migrate --force
