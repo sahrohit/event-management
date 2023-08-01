@@ -44,7 +44,7 @@ jobs:
         run: php artisan key:generate
 
       - name: Run Migrations
-        run: php artisan migrate
+        run: php artisan migrate -y
 
       - name: Seed the Database
         run: php artisan db:seed
