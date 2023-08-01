@@ -18,14 +18,9 @@ class ParticipantList extends Component
 
     public function render()
     {
-        if (!Participant::where("event_id", "=", $this->event->id)) {
-            return view('livewire.participant-list', [
-                'participants' => [],
-            ]);
-        }
 
         return view('livewire.participant-list', [
-            'participants' => Participant::where("event_id", "=", $this->event->id)->paginate(10),
+            'participants' => Participant::where("event_id", "=", $this->event->id)->latest()->paginate(10),
         ]);
     }
 }
