@@ -46,9 +46,6 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Seed the Database
-        run: php artisan db:seed
-
       - name: Run Migrations
         run: php artisan migrate --force
 
