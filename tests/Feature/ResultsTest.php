@@ -17,7 +17,6 @@ test(
         $participant = Participant::factory()->create(['event_id' => Event::latest()->first()->id])->latest()->first();
         get('/result?id=' . $participant->event->id . '&participant_id=' . $participant->id . '&pnr=' . $participant->pnr)
             ->assertOk();
-        echo $participant->id;
         Participant::latest()->first()->delete();
     }
 );
