@@ -43,5 +43,11 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      - name: Generate app key
+        run: php artisan migrate
+
+      - name: Generate app key
+        run: php artisan db:seed
+
       - name: Execute tests
         run: vendor/bin/pest
