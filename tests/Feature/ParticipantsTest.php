@@ -4,6 +4,8 @@ namespace Tests\Feature;
 
 use App\Http\Livewire\AddParticipant;
 use App\Http\Livewire\ParticipantList;
+use App\Http\Livewire\Navbar;
+use App\Http\Livewire\Footer;
 use App\Models\Event;
 use App\Models\Participant;
 use function Pest\Laravel\get;
@@ -11,21 +13,43 @@ use function Pest\Livewire\livewire;
 
 test(
     'It displays any Events Page',
-    fn() => get('/' . Event::inRandomOrder()->first()->id)
+    fn () => get('/' . Event::inRandomOrder()->first()->id)
         ->assertOk()
 );
 
 test(
-    'Event Page should contain add participant and participant list livewire components',
-    fn() => get('/' . Event::inRandomOrder()->first()->id)
-        ->assertSeeLivewire(AddParticipant::class)->assertSeeLivewire(ParticipantList::class)
+    'It displays event page with add participant, participant list, navbar and footer livewire components',
+    fn () => get('/' . Event::inRandomOrder()->first()->id)
+        ->assertSeeLivewire(AddParticipant::class)->assertSeeLivewire(ParticipantList::class)->assertSeeLivewire(Navbar::class)->assertSeeLivewire(Footer::class)
 );
 
-test("Correct event is displayed", fn() => get('/' . Event::latest()->first()->id)
+test("It displays the Correct event information", fn () => get('/' . Event::latest()->first()->id)
     ->assertSee(Event::latest()->first()->title)->assertSee(Event::latest()->first()->description));
 
+test('It displays email is required error message', function () {
+    livewire(AddParticipant::class)
+        ->set('email', '')
+        ->call('submit')
+        ->assertHasErrors(['email' => 'required'])->assertSee('The email field is required.');
+});
 
-test('Submitting the form, inserts into the database', function () {
+test('It displays valid email error message', function () {
+    livewire(AddParticipant::class)
+        ->set('email', 'abcdefghijklmnop')
+        ->call('submit')
+        ->assertHasErrors(['email' => 'email'])->assertSee('The email field must be a valid email address.');
+});
+
+test('It displays Email must be unique error message', function () {
+    Participant::factory()->create(['email' => 'already@present.com']);
+    livewire(AddParticipant::class)
+        ->set('email', 'already@present.com')
+        ->call('submit')
+        ->assertHasErrors(['email' => 'unique'])->assertSee("The email has already been taken.");
+    Participant::whereEmail('already@present.com')->delete();
+});
+
+test('It displays the data in the database after submitting of the form', function () {
 
     livewire(AddParticipant::class)
         ->set('event', Event::latest()->first())
@@ -46,35 +70,25 @@ test('Submitting the form, inserts into the database', function () {
     Participant::whereEmail('test@test.com')->delete();
 });
 
-test('Email is required', function () {
-    livewire(AddParticipant::class)
-        ->set('email', '')
-        ->call('submit')
-        ->assertHasErrors(['email' => 'required']);
-});
-
-test('Should be a valid email', function () {
-    livewire(AddParticipant::class)
-        ->set('email', 'abcdefghijklmnop')
-        ->call('submit')
-        ->assertHasErrors(['email' => 'email']);
-});
-
-test('Email must be unique', function () {
-    Participant::factory()->create(['email' => 'already@present.com']);
-    livewire(AddParticipant::class)
-        ->set('email', 'already@present.com')
-        ->call('submit')
-        ->assertHasErrors(['email' => 'unique']);
-    Participant::whereEmail('already@present.com')->delete();
-});
 
 test(
-    'It displays the result page',
+    'It displays the result page with the correct data',
     function () {
         Participant::factory()->create(['event_id' => Event::latest()->first()->id]);
         get('/result?id=' . Participant::latest()->first()->event->id . '&participant_id=' . Participant::latest()->first()->id . '&pnr=' . Participant::latest()->first()->pnr)
             ->assertOk();
         Participant::find(Participant::latest()->first()->id)->delete();
+    }
+);
+
+test(
+    'It deletes the participant record from the database',
+    function () {
+
+        Participant::factory()->create(['event_id' => Event::latest()->first()->id, 'email' => 'delete@test.com']);
+
+        livewire(ParticipantList::class, ['event' => Event::latest()->first()])->call('delete', Participant::latest()->first()->id);
+
+        $this->assertFalse(Participant::whereEmail('delete@test.com')->exists());
     }
 );
