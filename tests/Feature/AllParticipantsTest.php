@@ -38,7 +38,7 @@ test(
     function () {
         Participant::factory()->create(['event_id' => Event::latest()->first()->id, 'email' => 'deleteall@test.com']);
 
-        livewire(AllParticipants::class, ['event' => Participant::latest()->first()->event])->call('delete', Participant::whereEmail('deleteall@test.com')->first()->id);
+        livewire(AllParticipants::class, ['event' => Participant::whereEmail('deleteall@test.com')->first()->event])->call('delete', Participant::whereEmail('deleteall@test.com')->first()->id);
 
         $this->assertFalse(Participant::whereEmail('deleteall@test.com')->exists());
 
