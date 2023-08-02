@@ -18,12 +18,22 @@
 
 # About The Project
 
+The application enables users to efficiently organize and manage events by allowing them to add, view, edit, and delete participants for each event. Additionally, it incorporates QR code generation for seamless ticket tracking.
+
 -   [x] Project Init
 -   [x] Complete Functionality
 -   [x] Design UI
 -   [x] Write Tests [![codecov](https://codecov.io/gh/sahrohit/event-management/branch/main/graph/badge.svg?token=3928e7bf-bae0-4a28-997a-0e548887bdbe)](https://codecov.io/gh/sahrohit/event-management)
 -   [x] Deployment
 -   [ ] Automated Deployment
+
+## Pages
+
+| Pages         | Description                                                                |
+| ------------- | -------------------------------------------------------------------------- |
+| /             | Displays all the events in the database                                    |
+| /{event_id}   | Display Add Participants Form with Participants Table for a specific event |
+| /participants | Display all the participants                                               |
 
 ## Code Coverage
 
@@ -68,17 +78,10 @@ To install Event Maangement (Takshak) locally, follow these steps:
 
 7. Start Vite development server:
 
-    ```bash
+    ````bash
     npm run dev
-    ```
-
-## Pages
-
-| Pages         | Description                                                                |
-| ------------- | -------------------------------------------------------------------------- |
-| /             | Displays all the events in the database                                    |
-| /{event_id}   | Display Add Participants Form with Participants Table for a specific event |
-| /participants | Display all the participants                                               |
+    ```                                           |
+    ````
 
 ## Built With
 
