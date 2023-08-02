@@ -78,10 +78,9 @@ To install Event Maangement (Takshak) locally, follow these steps:
 
 7. Start Vite development server:
 
-    ````bash
+    ```bash
     npm run dev
-    ```                                           |
-    ````
+    ```
 
 ## Built With
 
