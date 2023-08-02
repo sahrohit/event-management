@@ -21,7 +21,7 @@
 -   [x] Project Init
 -   [x] Complete Functionality
 -   [x] Design UI
--   [x] Write Tests &ws [![codecov](https://codecov.io/gh/sahrohit/event-management/branch/main/graph/badge.svg?token=3928e7bf-bae0-4a28-997a-0e548887bdbe)](https://codecov.io/gh/sahrohit/event-management)
+-   [x] Write Tests [![codecov](https://codecov.io/gh/sahrohit/event-management/branch/main/graph/badge.svg?token=3928e7bf-bae0-4a28-997a-0e548887bdbe)](https://codecov.io/gh/sahrohit/event-management)
 -   [x] Deployment
 -   [ ] Automated Deployment
 
