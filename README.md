@@ -8,6 +8,8 @@
   <p align="center">
     Built with ❤️
 
+[http://events.rudejellyfish.live](http://events.rudejellyfish.live)
+
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/ctrl-c-ctrl-v.svg)](https://forthebadge.com)
@@ -16,9 +18,14 @@
 
 # About The Project
 
-## Code Coverage
+-   [x] Project Init
+-   [x] Complete Functionality
+-   [x] Design UI
+-   [x] Write Tests &ws [![codecov](https://codecov.io/gh/sahrohit/event-management/branch/main/graph/badge.svg?token=3928e7bf-bae0-4a28-997a-0e548887bdbe)](https://codecov.io/gh/sahrohit/event-management)
+-   [x] Deployment
+-   [ ] Automated Deployment
 
-[![codecov](https://codecov.io/gh/sahrohit/event-management/branch/main/graph/badge.svg?token=3928e7bf-bae0-4a28-997a-0e548887bdbe)](https://codecov.io/gh/sahrohit/event-management)
+## Code Coverage
 
 ![Code Coverage](public/coverage.png)
 
